@@ -37,10 +37,15 @@ let game = () => {
         else if (result.includes("Win"))
             player++;
     }
-    if (computer == player)
-        console.log("Match Tied!")
-    else if (computer > player)
-        console.log("Computer wins!")
-    else console.log("You win!");
+    if (computer == player) {
+        console.log(`Match Tied!`);
+    } else if (computer > player) {
+        points = computer - player;
+        console.log(`Computer wins! by ${points} points.`);
+    } else {
+        points = player - computer;
+        console.log(`You win! by ${points} points.`);
+    }
+
 };
 game();
