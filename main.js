@@ -1,51 +1,127 @@
 let computerPlay = () => {
     let a = Math.floor(Math.random() * 3);
-    let choice = ['Rock', 'Paper', 'Scissors'];
+    let choice = ['rock', 'paper', 'scissors'];
     return (choice[a]);
 };
-let playRound = (computerSelection, playerSelection) => {
+
+
+function playRound(playerSelection) {
+    let computerSelection = computerPlay();
     //check for tie
-    if (computerSelection.toLowerCase() === playerSelection.toLowerCase())
+    if (computerSelection === playerSelection)
         return "Tie!";
     //check for rock
-    if (playerSelection.toLowerCase() === 'rock')
-        if (computerSelection.toLowerCase() == 'scissors')
+    if (playerSelection === 'rock')
+        if (computerSelection === 'scissors')
             return "You Win! Rock beats Scissors.";
         else return "You Lose! Paper beats Rock.";
         //check for scissors
-    if (playerSelection.toLowerCase() === 'scissors')
-        if (computerSelection.toLowerCase() == 'paper')
+    if (playerSelection === 'scissors')
+        if (computerSelection === 'paper')
             return "You Win! Scissors beats Paper.";
         else return "You Lose! Rock beats Scissors.";
         //check for paper
-    if (playerSelection.toLowerCase() === 'paper')
-        if (computerSelection.toLowerCase() == 'rock')
+    if (playerSelection === 'paper')
+        if (computerSelection === 'rock')
             return "You Win! Paper beats Rock.";
         else return "You Lose! Scissors beats paper.";
 };
 
-let game = () => {
-    computer = 0;
-    player = 0;
-    for (let i = 1; i < 6; i++) {
-        let playerSelection = prompt('Enter "Rock" "Paper" or "Scissors"', "Scissors");
-        let computerSelection = computerPlay();
-        let result = playRound(computerSelection, playerSelection);
-        console.log(result);
-        if (result.includes("Lose"))
-            computer++;
-        else if (result.includes("Win"))
-            player++;
-    }
+const showLive = (playerSelection) => {
+    result = playRound(playerSelection);
+    showLiveResult(result);
+    return result;
+};
+
+function showLiveResult(result) {
+    document.getElementById('liveResult').innerText = `live: ${result}`;
+}
+
+function game() {
+    let player = 0;
+    let computer = 0;
+
+
+    const paper = document.getElementById('paper');
+    paper.addEventListener('click', function results() {
+
+        if (computer < 5 && player < 5) {
+            result = showLive('paper');
+            if (result.includes('Win')) {
+                player++;
+                document.getElementById('player').innerText = `${player}`;
+            } else if (result.includes('Lose')) {
+                computer++;
+                document.getElementById('computer').innerText = `${computer}`;
+            } else if (result.includes('Tie')) {
+                player++;
+                document.getElementById('player').innerText = `${player}`;
+                computer++;
+                document.getElementById('computer').innerText = `${computer}`;
+            }
+        } else {
+            showFinal(computer, player);
+            this.removeEventListener('click', results);
+        }
+    })
+
+
+    const scissors = document.getElementById('scissors');
+    scissors.addEventListener('click', function results() {
+
+        if (computer < 5 && player < 5) {
+            result = showLive('scissors');
+            if (result.includes('Win')) {
+                player++;
+                document.getElementById('player').innerText = `${player}`;
+            } else if (result.includes('Lose')) {
+                computer++;
+                document.getElementById('computer').innerText = `${computer}`;
+            } else if (result.includes('Tie')) {
+                player++;
+                document.getElementById('player').innerText = `${player}`;
+                computer++;
+                document.getElementById('computer').innerText = `${computer}`;
+            }
+        } else {
+            showFinal(computer, player);
+            this.removeEventListener('click', results);
+        }
+    })
+
+
+    const rock = document.getElementById('rock');
+    rock.addEventListener('click', function results() {
+
+        if (computer < 5 && player < 5) {
+            result = showLive('rock');
+            if (result.includes('Win')) {
+                player++;
+                document.getElementById('player').innerText = `${player}`;
+            } else if (result.includes('Lose')) {
+                computer++;
+                document.getElementById('computer').innerText = `${computer}`;
+            } else if (result.includes('Tie')) {
+                player++;
+                document.getElementById('player').innerText = `${player}`;
+                computer++;
+                document.getElementById('computer').innerText = `${computer}`;
+            }
+        } else {
+            showFinal(computer, player);
+            this.removeEventListener('click', results);
+        }
+    })
+}
+
+function showFinal(computer, player) {
     if (computer == player) {
-        console.log(`Match Tied!`);
+        document.getElementById('finalResult').innerText = "Final Result: It's a draw!";
     } else if (computer > player) {
-        points = computer - player;
-        console.log(`Computer wins! by ${points} points.`);
+        document.getElementById('finalResult').innerText = `Final Result: Computer Wins by ${computer-player} points!`;
     } else {
-        points = player - computer;
-        console.log(`You win! by ${points} points.`);
+        document.getElementById('finalResult').innerText = `Final Result: Player Wins by ${player-computer} points!`;
     }
 
-};
+}
 game();
