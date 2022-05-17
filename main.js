@@ -124,4 +124,8 @@ function showFinal(computer, player) {
     }
 
 }
+
+function reset() {
+    window.location.reload();
+}
 game();

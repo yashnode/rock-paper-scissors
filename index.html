@@ -6,15 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <style>
-        button {
-            font-size: large;
-        }
-        
-        div {
-            font-size: large;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -23,11 +15,12 @@
     <button id="scissors">scissors</button>
     <button id="paper">paper</button> <br>
     <div>Player:
-        <span id="player" style="color:blue">0</span></div>
+        <span id="player">0</span></div>
     <div>Computer:
-        <span id="computer" style="color: red;">0</span></div>
-    <div id="liveResult" style="color: blue;">live:</div>
-    <div id="finalResult" style="color:red;">Final Result:</div>
+        <span id="computer">0</span></div>
+    <div id="liveResult">live:</div>
+    <div id="finalResult">Final Result:</div>
+    <button id="reset" onclick="reset()">Reset</button>
 
 </body>
 <script src="main.js"></script>
