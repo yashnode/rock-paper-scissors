@@ -5,7 +5,7 @@ body {
     font-weight: bold;
     color: white;
     text-align: center;
-    margin: 150px auto;
+    margin: 200px auto;
 }
 
 h1 {
@@ -30,4 +30,5 @@ button {
 div {
     font-size: large;
     color: white;
+    padding: 7px;
 }
