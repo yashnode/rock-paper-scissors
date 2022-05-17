@@ -32,3 +32,17 @@ div {
     color: white;
     padding: 7px;
 }
+
+footer {
+    text-align: center;
+    color: white;
+    position: absolute;
+    width: 50%;
+    margin: 0 25%;
+    bottom: 10px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
